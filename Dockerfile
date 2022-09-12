@@ -1,6 +1,6 @@
-ARG version
+ARG image
 
-FROM ruby:$version-alpine
+FROM $image
 
 ARG packages
 
@@ -11,4 +11,4 @@ ENV NODE_ENV=production
 
 WORKDIR /root
 
-RUN apk add --no-cache --update $packages
+RUN apt-get update && apt-get install -y $packages && rm -rf /var/lib/apt/lists/*

@@ -1,20 +1,20 @@
 version: "3"
 
 services:
-  builder-production:
+  production:
     build:
       context: .
       args:
-        version: $version
-        packages: tzdata postgresql-client bash
+        image: ruby:$version
+        packages: ${packages_production}
     image: darroue/ruby:$version-production
     depends_on:
-      - builder-development
+      - development
 
-  builder-development:
+  development:
     build:
       context: .
       args:
-        version: $version
-        packages: build-base tzdata postgresql-dev nodejs yarn
+        image: ruby:$version
+        packages: ${packages_development}
     image: darroue/ruby:$version-development
