@@ -11,8 +11,7 @@ ENV NODE_ENV=production
 
 WORKDIR /root
 
-RUN apt-get update \
-  && curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
-  && npm install -g yarn \
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - \
   && apt-get install -y $packages \
+  && npm install -g yarn \
   && rm -rf /var/lib/apt/lists/*
