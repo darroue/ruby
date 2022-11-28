@@ -1,9 +1,20 @@
 version: "3"
 
 services:
-  builder:
+  production:
     build:
       context: .
       args:
-        version: $version
-    image: darroue/ruby:$version
+        image: ruby:$version
+        packages: ${packages_production}
+    image: darroue/ruby:$version-production
+    depends_on:
+      - development
+
+  development:
+    build:
+      context: .
+      args:
+        image: ruby:$version
+        packages: ${packages_development}
+    image: darroue/ruby:$version-development
