@@ -10,7 +10,7 @@ services:
         commands: ${commands_production}
         node_version: $node_version
         image_env: production
-    image: $image_prefix/$ruby_version:production
+    image: $image_prefix:$ruby_version-production
     depends_on:
       - development
 
@@ -23,14 +23,14 @@ services:
         commands: ${commands_development}
         node_version: $node_version
         image_env: development
-    image: $image_prefix/$ruby_version:development
+    image: $image_prefix:$ruby_version-development
 
   production_with_node:
     extends:
       service: production
-    image: $image_prefix/$ruby_version-$node_version:production
+    image: $image_prefix:$ruby_version-$node_version-production
 
   development_with_node:
     extends:
       service: development
-    image: $image_prefix/$ruby_version-$node_version:development
+    image: $image_prefix:$ruby_version-$node_version-development
