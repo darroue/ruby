@@ -9,7 +9,7 @@ services:
         packages: ${packages_production}
         commands: ${commands_production}
         image_env: production
-    image: europe-central2-docker.pkg.dev/petr-radous/ruby/$version:production
+    image: darroue/ruby:${version}-production
     depends_on:
       - development
 
@@ -21,4 +21,4 @@ services:
         packages: ${packages_development}
         commands: ${commands_development}
         image_env: development
-    image: europe-central2-docker.pkg.dev/petr-radous/ruby/$version:development
+    image: darroue/ruby:${version}-development
