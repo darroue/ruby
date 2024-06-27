@@ -19,7 +19,7 @@ services:
       context: .
       args:
         image: ruby:$ruby_version
-        packages: ${packages_development}
+        packages: ${packages_production} ${packages_development}
         commands: ${commands_development}
         node_version: $node_version
         image_env: development
@@ -29,3 +29,6 @@ services:
     extends:
       service: development
     image: $image_prefix:$ruby_version-$node_version-development
+    build:
+      args:
+        commands: "${commands_development} && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash && source /root/.nvm/nvm.sh && nvm install $node_version"
