@@ -25,11 +25,6 @@ services:
         image_env: development
     image: $image_prefix:$ruby_version-development
 
-  production_with_node:
-    extends:
-      service: production
-    image: $image_prefix:$ruby_version-$node_version-production
-
   development_with_node:
     extends:
       service: development
