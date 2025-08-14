@@ -3,30 +3,8 @@ services:
     build:
       context: .
       args:
-        image: ruby:$ruby_version
-        packages: ${packages_production}
-        commands: ${commands_production}
-        node_version: $node_version
-        image_env: production
-    image: $image_prefix:$ruby_version-production
-    depends_on:
-      - development
-
-  development:
-    build:
-      context: .
-      args:
-        image: ruby:$ruby_version
-        packages: ${packages_production} ${packages_development}
-        commands: ${commands_development}
-        node_version: $node_version
-        image_env: development
-    image: $image_prefix:$ruby_version-development
-
-  development_with_node:
-    extends:
-      service: development
-    image: $image_prefix:$ruby_version-$node_version-development
-    build:
-      args:
-        commands: "${commands_development} && curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash && source /root/.nvm/nvm.sh && nvm install $node_version"
+        packages: ${packages}
+        commands: ${commands}
+        ruby_version: ${ruby_version}
+        asdf_version: ${asdf_version}
+    image: $image_prefix:$ruby_version
