@@ -17,10 +17,11 @@ RUN apt-get update \
   && apt-get install -y --no-install-recommends $packages \
   && rm -rf /var/lib/apt/lists/*
 
+ARG platform
 # Install asdf system-wide from official release
-RUN curl -LO "https://github.com/asdf-vm/asdf/releases/download/${asdf_version}/asdf-${asdf_version}-linux-amd64.tar.gz" \
-  && tar -xzf "asdf-${asdf_version}-linux-amd64.tar.gz" -C /opt \
-  && rm "asdf-${asdf_version}-linux-amd64.tar.gz" \
+RUN curl -LO "https://github.com/asdf-vm/asdf/releases/download/${asdf_version}/asdf-${asdf_version}-linux-${platform}.tar.gz" \
+  && tar -xzf "asdf-${asdf_version}-linux-${platform}.tar.gz" -C /opt \
+  && rm "asdf-${asdf_version}-linux-${platform}.tar.gz" \
   && mv /opt/asdf /usr/local/bin/asdf \
   && chmod +x /usr/local/bin/asdf \
   && mkdir -p /opt/asdf \

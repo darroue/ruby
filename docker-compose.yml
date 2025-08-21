@@ -1,5 +1,5 @@
 services:
-  production:
+  amd64:
     build:
       context: .
       args:
@@ -7,4 +7,20 @@ services:
         commands: ${commands}
         ruby_version: ${ruby_version}
         asdf_version: ${asdf_version}
+      platforms:
+        - linux/amd64
     image: $image_prefix:$ruby_version
+
+  arm64:
+    build:
+      context: .
+      args:
+        packages: ${packages}
+        commands: ${commands}
+        ruby_version: ${ruby_version}
+        asdf_version: ${asdf_version}
+        platform: arm64
+      platforms:
+        - linux/arm64
+
+    image: $image_prefix:$ruby_version-arm64
