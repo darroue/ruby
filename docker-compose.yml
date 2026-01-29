@@ -4,7 +4,6 @@ services:
       context: .
       args:
         packages: ${packages}
-        commands: ${commands}
         ruby_version: ${ruby_version}
         asdf_version: ${asdf_version}
       platforms:
@@ -16,7 +15,6 @@ services:
       context: .
       args:
         packages: ${packages}
-        commands: ${commands}
         ruby_version: ${ruby_version}
         asdf_version: ${asdf_version}
         platform: arm64
