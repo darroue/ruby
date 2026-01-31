@@ -3,6 +3,7 @@ FROM ubuntu:latest
 ARG packages
 ARG ruby_version
 ARG asdf_version
+ARG platform
 
 ENV RAILS_ENV=production
 
