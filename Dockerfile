@@ -35,7 +35,6 @@ RUN curl -LO "https://github.com/asdf-vm/asdf/releases/download/${asdf_version}/
 # Set environment for current session
 ENV ASDF_DIR="/opt/asdf"
 ENV PATH="/usr/local/bin:/root/.asdf/shims:$PATH"
-ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so.2"
 
 # Install asdf plugins and Ruby version
 RUN asdf plugin add nodejs \
@@ -43,3 +42,5 @@ RUN asdf plugin add nodejs \
   && asdf plugin add redis \
   && asdf set ruby $ruby_version \
   && asdf install ruby $ruby_version
+
+ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so.2"
