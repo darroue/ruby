@@ -10,7 +10,6 @@ ENV RAILS_ENV=production
 ENV SECRET_KEY_BASE=21fb7205d746fd4e093291cc8fc9c87d
 ENV RAILS_MASTER_KEY=ae25e2db6bbb94865c5109ea0ccf6b88b28cd2fee3c34174d1a41c7ddf039247168f79a6c90d4d2169d37ae65406080ddc7e47a8dd52b41027ed06df00430ecf
 ENV RAILS_SERVE_STATIC_FILES=1
-ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so.2"
 
 WORKDIR /root
 
@@ -36,6 +35,7 @@ RUN curl -LO "https://github.com/asdf-vm/asdf/releases/download/${asdf_version}/
 # Set environment for current session
 ENV ASDF_DIR="/opt/asdf"
 ENV PATH="/usr/local/bin:/root/.asdf/shims:$PATH"
+ENV LD_PRELOAD="/usr/lib/x86_64-linux-gnu/libjemalloc.so.2"
 
 # Install asdf plugins and Ruby version
 RUN asdf plugin add nodejs \
