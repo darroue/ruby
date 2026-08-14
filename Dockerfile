@@ -14,7 +14,8 @@ RUN apt-get update \
   && apt-get update \
   && apt-get install -y --no-install-recommends $packages \
   && ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so \
-  && rm -rf /var/lib/apt/lists /var/cache/apt/archives
+  && rm -rf /var/lib/apt/lists \
+  && rm -rf /var/cache/apt/archives
 
 ARG platform
 # Install asdf system-wide from official release
