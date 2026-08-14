@@ -5,12 +5,6 @@ ARG ruby_version
 ARG asdf_version
 ARG platform
 
-ENV RAILS_ENV=production
-
-ENV SECRET_KEY_BASE=21fb7205d746fd4e093291cc8fc9c87d
-ENV RAILS_MASTER_KEY=ae25e2db6bbb94865c5109ea0ccf6b88b28cd2fee3c34174d1a41c7ddf039247168f79a6c90d4d2169d37ae65406080ddc7e47a8dd52b41027ed06df00430ecf
-ENV RAILS_SERVE_STATIC_FILES=1
-
 WORKDIR /root
 
 RUN apt-get update \
@@ -19,7 +13,8 @@ RUN apt-get update \
   && wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add - \
   && apt-get update \
   && apt-get install -y --no-install-recommends $packages \
-  && rm -rf /var/lib/apt/lists/*
+  && ln -s /usr/lib/$(uname -m)-linux-gnu/libjemalloc.so.2 /usr/local/lib/libjemalloc.so \
+  && rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
 ARG platform
 # Install asdf system-wide from official release
