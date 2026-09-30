@@ -11,15 +11,15 @@ services:
         - linux/amd64
     image: $image_prefix:$ruby_version
 
-  arm64:
-    build:
-      context: .
-      args:
-        packages: ${packages}
-        ruby_version: ${ruby_version}
-        asdf_version: ${asdf_version}
-        platform: arm64
-      platforms:
-        - linux/arm64
+  # arm64:
+  #   build:
+  #     context: .
+  #     args:
+  #       packages: ${packages}
+  #       ruby_version: ${ruby_version}
+  #       asdf_version: ${asdf_version}
+  #       platform: arm64
+  #     platforms:
+  #       - linux/arm64
 
-    image: $image_prefix:$ruby_version-arm64
+  #   image: $image_prefix:$ruby_version-arm64
